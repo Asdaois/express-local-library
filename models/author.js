@@ -6,12 +6,12 @@ const AuthorSchema = new Schema({
   first_name: {
     type: String,
     required: true,
-    maxLength: 100,
+    maxlength: 100,
   },
   family_name: {
     type: String,
     required: true,
-    maxLength: 100,
+    maxlength: 100,
   },
   date_of_birth: {
     type: Date,

@@ -10,10 +10,11 @@ block content
     h4 Books
 
     dl
-      each book in author_books
+      - const books = author_books || []
+      each book in books
         dt
           a(href=book.url) #{book.title}
         dd #{book.summary}
-
       else
         p This author has no books.
+      

@@ -17,25 +17,26 @@ exports.list = (req, res) => {
 };
 
 // Display detail page for a specific Author.
-exports.detail = (req, res, next) => {
+exports.detail = function (req, res, next) {
   async.parallel(
     {
-      author: (callback) => {
+      author: function (callback) {
         Author.findById(req.params.id).exec(callback);
       },
-      author_books: (callback) => {
+      authors_books: function (callback) {
         Book.find({ author: req.params.id }, "title summary").exec(callback);
       },
     },
-    (err, results) => {
-      if (err) return next(err);
-
-      if (results.author === null) {
-        const err = new Error("Author not found");
+    function (err, results) {
+      if (err) {
+        return next(err);
+      } // Error in API usage.
+      if (results.author == null) {
+        // No results.
+        var err = new Error("Author not found");
         err.status = 404;
         return next(err);
-      }
-
+      } // Successful, so render.
       res.render("author/detail", {
         title: "Author Detail",
         author: results.author,

@@ -6,7 +6,7 @@ exports.list = (req, res) => {
   Genre.find().exec((err, list_genres) => {
     if (err) return next(err);
 
-    res.render("genre_list", {
+    res.render("genre/list", {
       title: "Genre list",
       genre_list: list_genres,
     });
@@ -33,7 +33,7 @@ exports.detail = (req, res, next) => {
         return next(err);
       }
 
-      res.render("genre_detail", {
+      res.render("genre/detail", {
         title: "Genre Detail",
         genre: results.genre,
         genre_books: results.genre_books,

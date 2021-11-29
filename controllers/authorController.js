@@ -6,7 +6,7 @@ exports.list = (req, res) => {
     .exec((err, list_authors) => {
       if (err) return next(err);
 
-      res.render("author_list", {
+      res.render("author/list", {
         title: "Author List",
         author_list: list_authors,
       });

@@ -40,7 +40,7 @@ exports.list = (req, res) => {
     .populate("author")
     .exec((err, list_books) => {
       if (err) return next(err);
-      res.render("book_list", { title: "Book List", book_list: list_books });
+      res.render("book/list", { title: "Book List", book_list: list_books });
     });
 };
 
@@ -67,7 +67,7 @@ exports.detail = (req, res, next) => {
         return next(err);
       }
 
-      res.render("book_detail", {
+      res.render("book/detail", {
         title: results.book.title,
         book: results.book,
         book_instances: results.book_instance,

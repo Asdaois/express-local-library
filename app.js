@@ -39,9 +39,6 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-(async () => {
-  //Connect to database
-  await require("./src/database");
-})();
+require("./src/database.js");
 
 module.exports = app;

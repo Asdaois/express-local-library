@@ -22,7 +22,7 @@ const BookInstanceSchema = new Schema(
   { timestamps: true }
 );
 
-BookInstanceSchema.virtual("url").get(() =>  {
+BookInstanceSchema.virtual("url").get(function () {
   return `/catalog/bookinstance/${this._id}`;
 });
 

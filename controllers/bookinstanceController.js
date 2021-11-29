@@ -6,7 +6,7 @@ exports.list = (req, res) => {
     .populate("book")
     .exec((err, list_bookinstances) => {
       if (err) return next(err);
-
+      console.log(list_bookinstances[0].url);
       res.render("bookinstance/list", {
         title: "Book Instance List",
         bookinstance_list: list_bookinstances,
@@ -16,7 +16,7 @@ exports.list = (req, res) => {
 
 // Display detail page for a specific BookInstance.
 exports.detail = (req, res, next) => {
-  BookInstance.findById(req.params.id)
+  Bookinstance.findById(req.params.id)
     .populate("book")
     .exec((err, bookinstance) => {
       if (err) return next(err);
